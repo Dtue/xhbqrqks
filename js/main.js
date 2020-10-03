@@ -365,29 +365,6 @@ window.onload = function(){
             var finalpoints = [0,0,0,0,0,0,0];
             var chooseGet = [0,0,0,0,0];
             document.getElementById("submint").finalScore = function(){
-                function doubleScore (ipt,ex,pst){
-                    var doubleGet = 0;
-                    var doubleFinal = 0;
-                    var wrong = 0;
-                    for(i=0;i<4;i++){
-                        if (ipt[i].checked == true){
-                            doubleGet += 1;
-                            if ((ex[i].innerHTML == pst.CorrectSelection1)||(ex[i].innerHTML == pst.CorrectSelection2)){
-                                doubleFinal += 1;
-                            }
-                            if ((ex[i].innerHTML != pst.CorrectSelection1)&&(ex[i].innerHTML != pst.CorrectSelection2)){
-                                wrong += 1;
-                            }
-                        }
-                    }
-                    if (wrong != 0){
-                        doubleFinal = 0;
-                    }
-                    if (doubleGet > 2){
-                        doubleFinal = 0;
-                    }
-                    return doubleFinal;
-                }
                 if(je1c1.checked == true){
                     chooseGet[0]+=1;
                     if (document.getElementById("e1slt1").innerHTML == Ex.Ex1[e1num].CorrectSelection){finalpoints[0]=1;}
@@ -482,6 +459,29 @@ window.onload = function(){
                 }
                 if(chooseGet[4]!=1){
                     finalpoints[4]=0;
+                }
+                function doubleScore (ipt,ex,pst){
+                    var doubleGet = 0;
+                    var doubleFinal = 0;
+                    var wrong = 0;
+                    for(i=0;i<4;i++){
+                        if (ipt[i].checked == true){
+                            doubleGet += 1;
+                            if ((ex[i].innerHTML == pst.CorrectSelection1)||(ex[i].innerHTML == pst.CorrectSelection2)){
+                                doubleFinal += 1;
+                            }
+                            if ((ex[i].innerHTML != pst.CorrectSelection1)&&(ex[i].innerHTML != pst.CorrectSelection2)){
+                                wrong += 1;
+                            }
+                        }
+                    }
+                    if (wrong != 0){
+                        doubleFinal = 0;
+                    }
+                    if (doubleGet > 2){
+                        doubleFinal = 0;
+                    }
+                    return doubleFinal;
                 }
                 finalpoints[5] = doubleScore(document.getElementsByName("dchoose1"),document.getElementsByName("e6slt"),Ex.Ex6[e6num]);
                 finalpoints[6] = doubleScore(document.getElementsByName("dchoose2"),document.getElementsByName("e7slt"),Ex.Ex7[e7num]);
